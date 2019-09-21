@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Week 3 -- Responsive Design - Janessa Garrow</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+				<header id="header" class="alt">
+						<h1><a href="index.html">Janessa Garrow</a></h1>
+						<input class="menu-btn" type="checkbox" id="menu-btn" />
+  						<label class="menu-icon" for="menu-btn">
+							<span class="navicon"></span>
+						</label>
+
+						<nav class='menu'>
+							<a class='nav-item' href="index.html">Home</a>
+							<a class='nav-item' href="aboutme.html">About Me</a>
+							<a class='nav-item' href="blog_browse_all.html">Blog</a>
+							
+						</nav>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header id="banner">
+							<div class="inner">
+								<h2>Week 3 -- Responsive Design</h2>
+								<p>First week of Sprint #2!</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner blog">
+
+									<h3 class="major">Media Queries and Accessibility</h3>
+									<p>This week we learned about how to use media queries in our CSS in order to change the styling of our HTML for different screen sizes. This allows us to make our mobile, tablet, and desktop versions of our sites to all still look great despite their size differences.</p>
+									<p>You can set sizes using units like px, em, rem, vw/vh, or percentages. Pixels are absolute lengths that don't adapt to different screen sizes. Em and rem are relative units in that their size will adjust based on the size of their parent (em) or root (rem) element font size. Percentages are also relative units and set the size relative to the parent element. View width (vw) and view height (vh) are completely reliant on the width and heigh of the viewport.</p>
+
+									<p>We also learned about different site layout types: fixed, fluid, adaptive, and responsive.</p>
+									<p>Fixed sites are designed with one layout styling in mind (usually desktop), so it is not "friendly" for other screen sizes because the content doesn't adjust.</p>
+									<p>Fluid sites adapt to different screen sizes, but they grow and shrink proportionally. This can make the site look weird because things like fonts and images can get too small or big.</p>
+									<p>Adaptive sites use media queries to change the styling on a site for different specified screen sizes. This can help avoid the funky proportions that can be caused by fluid sites. However, widths are still hard coded.</p>
+									<p>Finally, responsive sites also use media queries to adapt to different screen sizes. However, they are different from adaptive sites in that they still use responsive units for widths and other sizings instead of hard coded sizes so that the site can always adapt to the screen sizes that don't have their own media queries.</p>
+
+									<h3 class="major">Thoughts and Experience</h3>
+									<p>I really enjoyed the lessons and projects this week! I loved that in class they really emphasized the importance of adaptive and responsive websites, not just for better user experience, but to make websites more accessible. For example, hard coding things like font sizes can make things difficult for people with visual impairments that rely on accessibility zoom features in browsers because the font won't adjust as needed. It's important that when we structure our HTML and design our CSS that we keep accessibility in mind. No one should be excluded from being able to access sites simply because of the way a site was designed.</p>
+
+									<section class="features">
+										<article>
+											<a href="#" class="image"><img src="images/sprint_race.jpg" alt="Photo by Goh Rhy Yan on Unsplash" /></a>
+											<h3 class="major">Week 2 -- First Sprint Challenge</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Continue to post</a>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/adventure_begins_450x263.jpg" alt="Photo by Simon Migaj on Unsplash" /></a>
+											<h3 class="major">Week 1</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Continue to post</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+							<ul class="contact">
+									<li class="icon brands fa-twitter"><a href="https://twitter.com/JanessaGarrow"></a></li>
+									<li class="icon brands fab fa-linkedin-in"><a href="https://www.linkedin.com/in/janessa-garrow-b9b760193/"></a></li>
+									<li class="icon brands fab fa-github"><a href="https://github.com/jgarrow"></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
