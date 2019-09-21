@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Blog - Janessa Garrow</title>
+		<title>Week 3 -- Responsive Design - Janessa Garrow</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -26,32 +26,38 @@
 						</label>
 
 						<nav class='menu'>
-								<a class='nav-item' href="index.html">Home</a>
+							<a class='nav-item' href="index.html">Home</a>
 							<a class='nav-item' href="aboutme.html">About Me</a>
-							<a class='nav-item' href="#">Resume</a>
+							<a class='nav-item' href="blog_browse_all.html">Blog</a>
+							
 						</nav>
 					</header>
 
 				<!-- Wrapper -->
 					<section id="wrapper">
-						<header>
+						<header id="banner">
 							<div class="inner">
-								<h2>Blog</h2>
-								<p>Read about my experiences and what I'm learning as a part-time full stack web development student at Lambda School!</p>
+								<h2>Week 3 -- Responsive Design</h2>
+								<p>First week of Sprint #2!</p>
 							</div>
 						</header>
 
 						<!-- Content -->
 							<div class="wrapper">
-								<div class="inner">
+								<div class="inner blog">
 
-									<h3 class="major">Week 3 -- Responsive Design</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+									<h3 class="major">Media Queries and Accessibility</h3>
+									<p>This week we learned about how to use media queries in our CSS in order to change the styling of our HTML for different screen sizes. This allows us to make our mobile, tablet, and desktop versions of our sites to all still look great despite their size differences.</p>
+									<p>You can set sizes using units like px, em, rem, vw/vh, or percentages. Pixels are absolute lengths that don't adapt to different screen sizes. Em and rem are relative units in that their size will adjust based on the size of their parent (em) or root (rem) element font size. Percentages are also relative units and set the size relative to the parent element. View width (vw) and view height (vh) are completely reliant on the width and heigh of the viewport.</p>
 
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+									<p>We also learned about different site layout types: fixed, fluid, adaptive, and responsive.</p>
+									<p>Fixed sites are designed with one layout styling in mind (usually desktop), so it is not "friendly" for other screen sizes because the content doesn't adjust.</p>
+									<p>Fluid sites adapt to different screen sizes, but they grow and shrink proportionally. This can make the site look weird because things like fonts and images can get too small or big.</p>
+									<p>Adaptive sites use media queries to change the styling on a site for different specified screen sizes. This can help avoid the funky proportions that can be caused by fluid sites. However, widths are still hard coded.</p>
+									<p>Finally, responsive sites also use media queries to adapt to different screen sizes. However, they are different from adaptive sites in that they still use responsive units for widths and other sizings instead of hard coded sizes so that the site can always adapt to the screen sizes that don't have their own media queries.</p>
 
-									<h3 class="major">Vitae phasellus</h3>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+									<h3 class="major">Thoughts and Experience</h3>
+									<p>I really enjoyed the lessons and projects this week! I loved that in class they really emphasized the importance of adaptive and responsive websites, not just for better user experience, but to make websites more accessible. For example, hard coding things like font sizes can make things difficult for people with visual impairments that rely on accessibility zoom features in browsers because the font won't adjust as needed. It's important that when we structure our HTML and design our CSS that we keep accessibility in mind. No one should be excluded from being able to access sites simply because of the way a site was designed.</p>
 
 									<section class="features">
 										<article>

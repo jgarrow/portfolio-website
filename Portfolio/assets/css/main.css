@@ -4385,5 +4385,7 @@ input, select, textarea {
 		}
 	}
 
-
+.wrapper .inner.blog {
+	margin-bottom: 1em;
+}
 	
