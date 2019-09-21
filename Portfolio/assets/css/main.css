@@ -100,7 +100,7 @@ input, select, textarea {
 
 	body {
 		background-color: #2e3141;
-		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img.JPG");
+		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-1280x1280.jpeg");
 		background-size: auto,
  cover;
 		background-attachment: fixed,
@@ -182,7 +182,7 @@ input, select, textarea {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #ffffff !important;
+			color: #ffffff;
 		}
 
 		a.special:not(.button) {
@@ -2249,7 +2249,7 @@ input, select, textarea {
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
+	/* input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2329,7 +2329,7 @@ input, select, textarea {
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;
-	}
+	} */
 
 	::-webkit-input-placeholder {
 		color: rgba(255, 255, 255, 0.35) !important;
@@ -2442,6 +2442,9 @@ input, select, textarea {
 			padding: 0 0 1em 1.5em;
 			top: 0.25em;
 		}
+			.image.right img {
+				vertical-align: middle;
+			}
 
 		.image.fit {
 			display: block;
@@ -2662,6 +2665,18 @@ input, select, textarea {
 	ul.contact {
 		list-style: none;
 		padding: 0;
+		display: flex;
+		-moz-display: flex;
+		-webkit-display: flex;
+		-ms-display: flex;
+		flex-direction: row;
+		-moz-flex-direction: row;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		justify-content: center;
+		-moz-justify-content: center;
+		-webkit-justify-content: center;
+		-ms-justify-content: center;
 	}
 
 		ul.contact li {
@@ -2698,9 +2713,9 @@ input, select, textarea {
 				width: 2.5em;
 			}
 
-			ul.contact li:first-child {
+			/* ul.contact li:first-child {
 				margin-top: 0;
-			}
+			} */
 
 		@media screen and (max-width: 736px) {
 
@@ -3071,20 +3086,26 @@ input, select, textarea {
 
 /* Header */
 
+	#header > * {
+		flex-grow: 1;
+	}
+
 	#header {
 		-moz-transition: background-color 0.2s ease-in-out;
 		-webkit-transition: background-color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out;
 		background-color: rgba(53, 56, 73, 0.95);
-		height: 3.5em;
+		/* height: 3.5em; */
 		left: 0;
-		line-height: 3.5em;
-		padding: 0 1.25em;
+		/* line-height: 3.5em; */
+		/* padding: 0 1.25em; */
 		position: fixed;
 		top: 0;
 		width: 100%;
 		z-index: 10000;
+		display: flex;
+		align-items: center;
 	}
 
 		#header h1 {
@@ -3095,34 +3116,61 @@ input, select, textarea {
 			border-bottom: 0;
 			font-size: 0.8em;
 			margin-bottom: 0;
+			margin-left: 1rem;
 			opacity: 1;
 			visibility: visible;
+			width: 50%;
+			display: flex;
+			justify-content: flex-start;
 		}
 
 			#header h1 a {
 				border: 0;
+				text-decoration: none;
 			}
 
 		#header nav {
 			font-family: Raleway, Helvetica, sans-serif;
 			font-size: 0.8em;
 			font-weight: 700;
-			height: 3em;
+			/* height: 3em; */
 			letter-spacing: 0.1em;
 			line-height: 3em;
-			position: absolute;
-			right: 0.7em;
+			/* position: absolute;
+			right: 0.7em; */
 			text-transform: uppercase;
 			top: 0.7em;
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			/* max-width: 250px; */
+			/* margin-right: 2rem; */
 		}
 
 			#header nav a {
 				border: 0;
 				display: inline-block;
-				padding: 0 1em;
+				/* padding: 0 3em; */
+				margin: 0 2em;
+				text-decoration: none;
 			}
 
-				#header nav a:before {
+			/* "Hide" checkbox -- moves it off screen*/
+			#menu-btn {
+				position: absolute;
+  				top: -100%;
+  				left: -100%;
+			}
+
+			/* Hide hamburger for bigger screens */
+			#header .menu-icon {
+				visibility: hidden;
+			}
+
+
+
+
+				/* #header nav a:before {
 					float: right;
 					margin-left: 0.75em;
 				}
@@ -3162,22 +3210,158 @@ input, select, textarea {
 
 					#header nav a[href="#menu"]:active {
 						background-color: rgba(255, 255, 255, 0.075);
-					}
+					} */
 
 		#header.alt {
 			background-color: transparent;
 		}
 
 			#header.alt h1 {
-				opacity: 0;
-				visibility: hidden;
+				/* opacity: 0;
+				visibility: hidden; */
 			}
+
+		@media screen and (max-width: 966px) {
+			#header h1 {
+				width: 30%;
+			}
+
+			/* #header nav {
+				width: 70%;
+			} */
+
+			#header nav a {
+				padding: 0 2em;
+			}
+		}
 
 		@media screen and (max-width: 736px) {
 
+			/* Switch to hamburger menu here */
 			#header {
+				display: grid;
+				grid-template-areas:
+				   "title   title   hamburger"
+				   "nav     nav     nav";
+			}
+			  
+			  #header h1 {
+				grid-area: title;
+			  }
+			  
+			  #header .menu a {
+				text-decoration: none;
+				color: black;
+			  }
+			
+			  #header .menu a:hover {
+				  color: #25824a;
+			  }
+
+			  #header .menu-btn {
+				display: none;
+			  }
+			
+			  #header .menu-icon {
+				grid-area: hamburger;
+				cursor: pointer;
+				display: flex;
+				justify-content: flex-end;
+				align-items: baseline;
+				padding: 30px 20px 30px 0;
+				position: relative;
+				user-select: none;
+				visibility: visible;
+			  }
+			
+			  #header .navicon {
+				background: #fff;
+				display: block;
+				height: 2px;
+				width: 18px;
+				position: relative;
+				transition: background .2s ease-out;
+			  }
+			
+			  #header .navicon:before {
+				top: 5px;
+			  }
+			
+			  #header .navicon:after {
+				top: -5px;
+			  }
+			
+			  #header .navicon:before, .navicon:after {
+				background: #fff;
+				display: block;
+				width: 100%;
+				height: 100%;
+				content: '';
+				position: absolute;
+				transition: all .2s ease-out;
+			  }
+			
+			  #header .menu {
+				grid-area: nav;
+				max-width: unset;
+				max-height: 0;
+				transition: max-height .2s ease-out;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				/* background-color: rgba(53, 56, 73, 0.95); */
+				background-color: #fff;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+			  }
+			
+			  #header .menu a {
+				padding: 20px 20px;
+				/* border-right: 1px solid #f4f4f4; */
+				border-bottom: 1px solid #eee;
+				/* color: #fff; */
+				width: 100%;
+				text-align: center;
+				margin: 0;
+			  }
+			
+			  #header .menu-btn:checked ~ .menu {
+				max-height: 240px;
+				/* width: 100%; */
+				/* line-height: unset; */
+			  }
+
+			
+			  #header .menu-btn:checked ~ .menu-icon .navicon {
+				background: transparent;
+			  }
+			
+			  #header .menu-btn:checked ~ .menu-icon .navicon:before {
+				transform: rotate(-45deg);
+			  }
+			
+			  #header .menu-btn:checked ~ .menu-icon .navicon:after {
+				transform: rotate(45deg);
+			  }
+			
+			  #header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+			  #header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+				top: 0;
+			  }
+			}
+			
+
+
+
+
+
+/* asdfasfasdfasdfasdfasdfasdfasfdasdfasdfsaf */
+
+			/* #header {
 				height: 2.75em;
 				line-height: 2.75em;
+				position: relative;
 			}
 
 				#header nav {
@@ -3200,7 +3384,7 @@ input, select, textarea {
 
 							#header nav a[href="#menu"]:hover, #header nav a[href="#menu"]:active {
 								background-color: inherit;
-							}
+							} */
 
 		}
 
@@ -3463,17 +3647,16 @@ input, select, textarea {
 
 		@media screen and (max-width: 1280px) {
 
-			#banner {
+			.banner, #banner {
 				padding: 7em 0 8.25em 0 ;
 				background-color: #2e3141;
-				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-1280x1280.jpeg");
 				background-size: auto,
  cover;
 				background-position: center,
  center;
 				margin-bottom: -6.5em;
 			}
-
 		}
 
 		@media screen and (max-width: 980px) {
@@ -3577,8 +3760,8 @@ input, select, textarea {
 
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
-			background-color: #2e3141;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+			/* background-color: #2e3141;
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg"); */
 			background-size: auto,
  cover;
 			background-position: center,
@@ -3602,7 +3785,6 @@ input, select, textarea {
 			#wrapper > header .inner {
 				width: 100%;
 			}
-
 	}
 
 	@media screen and (max-width: 736px) {
@@ -3686,6 +3868,27 @@ input, select, textarea {
 			width: 55em;
 		}
 
+		.pic {
+			background-size: 100% 100%;
+			height: 257px;
+		}
+
+		.pic.responsive-web-design {
+			background-image: url("../../images/responsive-site-img.png");
+		}
+
+		@media screen and (max-width: 980px) {
+			.pic {
+				height: 305px;
+			}
+		}
+
+		@media screen and (max-width: 736px) {
+			.pic {
+				height: 201px;
+			}
+		}
+
 		.wrapper.style2 {
 			background-color: #353849;
 		}
@@ -3702,6 +3905,10 @@ input, select, textarea {
 				box-shadow: inset 0 -1px 0 0 #353849, 0 1px 0 0 #353849;
 			}
 
+			.pic.facebook {
+				background-image: url("../../images/facebook.jpg");
+			}
+
 		.wrapper.style3 {
 			background-color: #3d4051;
 		}
@@ -3716,6 +3923,10 @@ input, select, textarea {
 
 			.wrapper.style3:after {
 				box-shadow: inset 0 -1px 0 0 #3d4051, 0 1px 0 0 #3d4051;
+			}
+
+			.pic.bakery {
+				background-image: url("../../images/sweet-eats-bakery-img.jpg");
 			}
 
 		.wrapper.style4 {
@@ -3767,19 +3978,19 @@ input, select, textarea {
 			}
 
 		.wrapper.spotlight {
-			background-color: #4c5c96;
+			background-color: #55828B;
 		}
 
 			.wrapper.spotlight:before, .wrapper.spotlight:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%234c5c96%3B' /%3E%3C/svg%3E");
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2355828B%3B' /%3E%3C/svg%3E");
 			}
 
 			.wrapper.spotlight:before {
-				box-shadow: inset 0 -1px 0 0 #4c5c96, 0 1px 0 0 #4c5c96;
+				box-shadow: inset 0 -1px 0 0 #55828B, 0 1px 0 0 #55828B;
 			}
 
 			.wrapper.spotlight:after {
-				box-shadow: inset 0 -1px 0 0 #4c5c96, 0 1px 0 0 #4c5c96;
+				box-shadow: inset 0 -1px 0 0 #55828B, 0 1px 0 0 #55828B;
 			}
 
 			.wrapper.spotlight .inner {
@@ -3828,35 +4039,35 @@ input, select, textarea {
 			}
 
 			.wrapper.spotlight.style2 {
-				background-color: #45558d;
+				background-color: #3B6064;
 			}
 
 				.wrapper.spotlight.style2:before, .wrapper.spotlight.style2:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2345558d%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%233B6064%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style2:before {
-					box-shadow: inset 0 -1px 0 0 #45558d, 0 1px 0 0 #45558d;
+					box-shadow: inset 0 -1px 0 0 #3B6064, 0 1px 0 0 #3B6064;
 				}
 
 				.wrapper.spotlight.style2:after {
-					box-shadow: inset 0 -1px 0 0 #45558d, 0 1px 0 0 #45558d;
+					box-shadow: inset 0 -1px 0 0 #3B6064, 0 1px 0 0 #3B6064;
 				}
 
 			.wrapper.spotlight.style3 {
-				background-color: #3f4e85;
+				background-color: #364958;
 			}
 
 				.wrapper.spotlight.style3:before, .wrapper.spotlight.style3:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%233f4e85%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23364958%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style3:before {
-					box-shadow: inset 0 -1px 0 0 #3f4e85, 0 1px 0 0 #3f4e85;
+					box-shadow: inset 0 -1px 0 0 #364958, 0 1px 0 0 #364958;
 				}
 
 				.wrapper.spotlight.style3:after {
-					box-shadow: inset 0 -1px 0 0 #3f4e85, 0 1px 0 0 #3f4e85;
+					box-shadow: inset 0 -1px 0 0 #364958, 0 1px 0 0 #364958;
 				}
 
 			.wrapper.spotlight.style4 {
@@ -4013,13 +4224,17 @@ input, select, textarea {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		-moz-flex-direction: row;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
-		flex-direction: row;
+		-moz-flex-direction: column;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
 		-moz-flex-wrap: wrap;
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
 		flex-wrap: wrap;
 		margin: 0 auto;
 		width: 55em;
@@ -4030,7 +4245,7 @@ input, select, textarea {
 		}
 
 		#footer .inner form {
-			margin: 0 3em 0 0;
+			margin: 0 3em 3em 0;
 			width: calc(50% - 1.5em);
 		}
 
@@ -4044,6 +4259,7 @@ input, select, textarea {
 			margin: 4em 0 2em 0;
 			padding: 2em 0 0 0;
 			width: 100%;
+			text-align: center;
 		}
 
 			#footer .inner .copyright li {
@@ -4071,7 +4287,7 @@ input, select, textarea {
 
 		#footer {
 			background-color: #2e3141;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-1280x1280.jpeg");
 			background-size: auto,
  cover;
 			background-position: center,
@@ -4154,3 +4370,58 @@ input, select, textarea {
 		}
 
 	}
+
+
+	/* Different sized banner and footer images for different screen sizes to decrease loading times */
+	@media screen and (max-width: 1024px) {
+		body {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-1024x1024.jpeg");
+		}
+
+		#footer {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-1024x1024.jpeg");
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		body {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-900x900.jpeg");
+		}
+
+		#footer {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-900x900.jpeg");
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		body {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-768x768.jpeg");
+		}
+
+		#footer {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-768x768.jpeg");
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		body {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-600x600.jpeg");
+		}
+
+		#footer {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-600x600.jpeg");
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		body {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-480x480.jpeg");
+		}
+
+		#footer {
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/sacred-grove-img-480x480.jpeg");
+		}
+	}
+
+
+	
