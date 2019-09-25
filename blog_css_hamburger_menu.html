@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CSS Hamburger Menu - Janessa Garrow</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+				<header id="header" class="alt">
+						<h1><a href="index.html">Janessa Garrow</a></h1>
+						<input class="menu-btn" type="checkbox" id="menu-btn" />
+  						<label class="menu-icon" for="menu-btn">
+							<span class="navicon"></span>
+						</label>
+
+						<nav class='menu'>
+							<a class='nav-item' href="index.html">Home</a>
+							<a class='nav-item' href="aboutme.html">About Me</a>
+							<a class='nav-item' href="blog_browse_all.html">Blog</a>
+							
+						</nav>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header id="banner">
+							<div class="inner">
+								<h2>Pure CSS Hamburger Menu</h2>
+								<p>How to make a hamburger menu with pure CSS (no preprocessors)</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner blog">
+
+                                    <h3 class="major">Logic behind the setup</h3>
+                                    <p>View the full HTML and CSS example on <a href="https://codepen.io/jgarrow/pen/dybwPBq?editors=1100">CodePen</a>.</p>
+                                    <p>As I perused the internet for answers as to how to make this hamburger menu, I learned that I needed some sort of <code>input</code> in the HTML, like <code>radio</code> or <code>checkbox</code>. When the user provided the input (i.e. clicked on the box), it would then trigger the menu to drop down. However, we don’t want the user to actually see the checkbox. But how can the user click on it to trigger the menu dropdown if they can’t see it? I learned that we can give a <code>label</code> tag associated with the input. If the user clicks on the content within the  <code>label</code> tag, it acts the same as if you had clicked on the input field itself. Pretty neat! In order for this to work, <code>label</code> needs a <code>for</code> attribute whose value matches the <code>id</code> attribute of your <code>input</code>. For example:</p>
+                                    <pre><code>&lt;input type=“checkbox” id=“menu-btn” />
+&lt;label for=“menu-btn”>
+&lt;/label>
+</code></pre>
+                                    <p>Great, so we know what we need in the HTML that we can style with CSS to trigger the menu to dropdown! Just one problem though. I want my logo (or h1 tag) and menu to be on the same line with each other. And then when the screen is smaller, I want the hamburger menu to be in the spot that the nav was just in and then have the nav drop down below them. How do we structure the whole header HTML to make that possible?? This was one of the biggest struggles I had when trying to figure this out!</p>
+                                    <p>What if…what if we used <code>display: flex;</code> for the <code>header</code> when I don’t want the hamburger menu and used <code>display: grid;</code> when I do want the hamburger menu?Let me explain. If my HTML is structured like this:</p>
+                                    <pre><code>&lt;header>
+    &lt;h1>&lt;a href="index.html">Logo here&lt;/a>&lt;/h1>
+                                
+    &lt;input class="menu-btn" type="checkbox" id="menu-btn" />
+    &lt;label class="menu-icon" for="menu-btn">
+        &lt;span class="navicon">&lt;/span>
+    &lt;/label>
+
+    &lt;nav class=“menu">
+        &lt;a class=“nav-item” href="aboutme.html">About Me&lt;/a>
+        &lt;a class=“nav-item” href="blog.html">Blog&lt;/a>
+        &lt;a class=“nav-item” href="#">Resume&lt;/a>
+    &lt;/nav>	
+&lt;/header></code></pre>
+                                    <p>My <code>h1</code>, <code>input</code>, <code>label</code>, and <code>nav</code> elements are all siblings of <code>header</code>. So when I make the header a flex container, all of those siblings are now flex items. This allows me to set the <code>flex-flow: row wrap;</code> so that they are all on the same row together. Great! We’re one step closer. Now we need to find a way to hide the <code>input</code> and <code>label </code>so the user can’t actually see them. For this, we can do the following in our CSS:</p>
+                                    <pre><code>#menu-btn {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+}
+</code></pre>
+                                    <p>Ok, so what’s going on here? <code>#menu-btn</code> is the id we gave our <code>input</code> element. What does <code>position: absolute;</code> do? Let’s quickly go over the <code>position</code> property!</p>
+                                    <p>The default for <code>position</code> is <code>static</code>. This means that the HTML elements are going to display in the browser where they would naturally “fall”, so to speak.</p>
+                                    <p><code>position: relative;</code> allows you to change where your element is relative to where it normally would be if its position were static. So if you were to do <code>top: 5px;</code> for an element that has <code>position: relative;</code>, the element would be moved down 5px from the top of where that element would have been if you had left its position as static.</p>
+                                    <p><code>position: absolute;</code> allows you to change where your element is relative to its closest ancestor whose position is not static. If the immediate parent just has default <code>static</code> positioning, but the grandparent has something else like <code>position: relative;</code>, <code>position: fixed;</code>, or <code>position: sticky;</code>, then your element will be moved relative to the edges of that non-static, or positioned, element. If none of its ancestor containing blocks are positioned, then your element is moved to be positioned relative to the edges of the initial containing block (usually the <code>body</code>). The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">Mozilla Web Docs</a> have a nice little demo to see the positioning differences.</p>
+                                    <div class="code-snippet-row">
+                                        <pre><code>&lt;div class=“grandparent”>
+        &lt;section class=“parent”>
+            &lt;div class=“child">
+            &lt;/div>
+        &lt;/section>
+    &lt;/div>
+    </code></pre>
+                                        <pre><code>.grandparent {
+        position: relative;
+    }
+    
+    .parent {
+        position: static; 
+    }
+    
+    .child {
+        position: absolute;
+    }
+    </code></pre>
+                                    </div>
+                                    <p>Now that we understand better what <code>position: absolute;</code> does, let’s look at our styling for our <code>input</code> element again:</p>
+                                    <pre><code>#menu-btn {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+}
+</code></pre>
+                                    <p>Alright. So we know that <code>#menu-btn</code>, our <code>input</code>, is a child of our <code>header</code>. I never changed the <code>position</code> of the header, so it is just at the <code>static</code> default. Going back one more ancestor, we might reach the <code>body</code> element. Great! That would be our initial containing block, so that will be the element by which we determine where our <code>#menu-btn</code> goes!</p>
+                                    <p>For positioning, our options are <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code>. And the value that we give to those properties moves the element that far FROM that property. For example, we gave our <code>#menu-btn</code> a positioning of <code>top: -100%;</code> and <code>left: -100%;</code>. This will push our <code>#menu-btn</code> -100% of the size of the <code>body</code> from the top. In other words, towards the bottom. But here, since it is a negative value, it will go the opposite direction. Same thing with <code>left: -100%;</code>. Our <code>#menu-btn</code> will be pushed -100% from the left (towards the right) -100%. But again, since it is a negative value, it will end up moving left. Take a peek at that <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">Mozilla demo</a> if you’re still confused.</p>
+                                    <p>Wait, wouldn’t positioning the input <code>#menu-btn</code> like that push it off the screen? Exactly! Now no one will see it, but it is still there and can still be affected by the clicks of the user on the <code>label</code>. Ta-da! Easy peasy, as Bob Newby would say.</p>
+                                    <p>Ok, so now that we’ve successfully “hidden” our input <code>#menu-btn</code>, now we need to make our label invisible. We can do this by simply setting <code>visibility: hidden;</code>.</p>
+                                    <p>Great, so now all we can see on our header is the logo and the nav! Yay! We know we can use a media query to change the styling when we have a different size screen, but what would we do? We didn’t actually do much styling yet. And where’s this hamburger icon you talked about? We don’t have it yet! We haven’t needed it until we reached this media query, right? (Assuming you started with a desktop-first approach and are doing a max-width media query for smaller screens). Buckle up, kids. This is where the fun begins :) </p>
+                                    <p>Let’s revisit our HTML structure a bit. We have everything in our header as siblings, right? We set <code>display: flex;</code> and <code>flex-flow: row wrap;</code> to make the logo, input, label, and nav all on the same row. But wait. For a smaller screen, we just want the logo and the hamburger icon on the same row. We want the nav to show up one row down! Oh no, we structured our HTML wrong! Nope! This is where we can work some CSS grid magic :) If you’re not familiar with CSS grids, I highly recommend the <a href="https://cssgrid.io">tutorial by Wes Bos</a>. He does a great job and it’s free!</p>
+                                    <p>Assuming you know a bit about CSS grid, we’re going to use that for our header inside of our media query for smaller screens. So we’re going to override the <code>display: flex;</code> we had before in our header and now give it <code>display: grid;</code>. Why are we using grid, you ask? Well, not counting our input <code>#menu-btn</code> that we’ve positioned off screen, we have 3 items in our header: the logo, the label, and the nav. But now we just want the logo and the hamburger icon on one row and the nav on another row. This is where grid comes in. We can now give the header <code>grid-template-areas</code> to create 3 columns and 2 rows for our content, while simultaneously naming them:</p>
+                                    <pre><code>header {
+    grid-template-areas:
+    “logo	logo	hamburger”
+    “nav	nav     nav”;
+}
+</code></pre>
+                                    <p>Assuming you want your in the lefthand corner and the hamburger icon in the righthand corner, we can do something like this with our grid areas. Then all we have to do is call the selectors for the logo, label, and nav and give them their corresponding <code>grid-area</code> names and CSS grid works its magic and places them there!</p>
+
+                                    <h3 class="major">Making the hamburger icon</h3>
+                                    <p>Alrighty, let’s talk about this hamburger icon. Finally. Something that I excluded from the HTML snippets up until now is this little <code>span</code> that nests inside of our <code>label</code> element. Giving the label a child that spans the label makes our clickable input area, so to speak, larger so that it will trigger our dropdown menu.</p>
+                                    <pre><code>&lt;header>
+        &lt;h1>Logo here&lt;/h1>
+        &lt;input class=“menu-btn” type=“checkbox” id=“menu-btn” />
+        &lt;label class=“menu-icon” for=“menu-btn”>
+            &lt;span class=“navicon”>&lt;/span>
+        &lt;/label>
+        &lt;nav class=“menu”>
+            &lt;a class=“nav-item” href=“”>Home&lt;/a>
+            &lt;a class=“nav-item” href=“”>About&lt;/a>
+            &lt;a class=“nav-item” href=“”>Contact&lt;/a>
+        &lt;/nav>
+    &lt;/header>
+</code></pre>
+                                    <p>Now let’s give the <code>span</code> some styling so it looks like a hamburger icon! We can give it a <code>background-color</code> of whatever color we want our icon to be. Then we’ll give it <code>display: block;</code> and set the width and height. The lines on hamburger menus are pretty small, so we our sizings will be small. You might notice that only 1 line shows up. But hamburger menus usually have at least 2, if not 3! How do we make the others? This is where <code>:before</code> and <code>:after</code> pseudo-classes come in. <code>:before</code> let’s you create a “duplicate” of the selector and position it so that the browser displays the duplicate before the original, as if you had stuck another in the HTML right before the original. <code>:after</code> works in the same way, but instead of coming before the original, the browser will display it after. Pretty straightforward. </p>
+                                    <p>But without giving it any positioning and since our span <code>.navicon</code> is so small, those pseudo-classes just sit on top of the original and you can’t see a difference! No worries, we can add some positioning! For example:</p>
+                                    <pre><code>header .navicon:before {
+        top: 5px;
+    }
+
+    header .navicon:after {
+        bottom: 5px;
+    }
+</code></pre>
+                                    <p>Styling our pseudo-classes like this will create 2 duplicate “lines” identical to the original span <code>.navicon</code> and position them 5px above and below it. Ta-da! A 3-line hamburger icon all in CSS. Sweet.</p>
+                                    <p>Now that we have our cute burger, let’s make it have a smooth transition when we click on it. After all, since it’s nested inside of our label, clicking the hamburger will provide the check for our <code>input</code>. So let’s make it do something!</p>
+                                    <p>We can add a <code>transition</code> attribute to our span <code>.navicon</code> and its <code>:before</code> and <code>:after</code> pseudo-classes.</p>
+                                    <p>Then let’s make sure our nav is hiding. We want to make sure we can’t see it while the hamburger isn’t clicked. We can set <code>max-height: 0;</code> and have <code>overflow: hidden;</code>. Makes sense, right? If the height is zero, we won’t be able to see it the nav. So when we click on our hamburger, we need to override that height so that the nav will show up!</p>
+                                    <pre><code>header .menu-btn:checked ~ .menu {
+        max-height: 250px;
+    } 
+</code></pre>
+                                    <p>If we want to be a little bit fancy and have the hamburger icon turn into an X when the nav drops down (assuming we already gave the span transition properties earlier), we can now apply the following styling:</p>
+                                    <pre><code>header .menu-btn:checked ~ .menu-icon .navicon {
+        background: transparent;
+    } 
+</code></pre>
+                                    <p>So what is this saying? When our input <code>.menu-btn</code> (via the label) is checked, give the span <code>.navicon</code> a <code>background: transparent;</code>. Note that this only gives the original one a transparent background and not the <code>:before</code> and <code>:after</code> lines that were created from it. Now we should be left with the top and bottom lines of the hamburger icon.</p>
+                                    <p>Now to make them form an X! We have 2 parallel lines, so essentially all we need them to do is rotate 45 degrees. We can do that with the <code>transform</code> property.</p>
+                                    <pre><code>header .menu-btn:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+    }
+    
+    header .menu-btn:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+    }
+</code></pre>
+                                    <p>And then we can just tweak the positioning a little bit and voila! An X!</p>
+                                    <pre><code>header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+</code></pre>
+                                    <p>Side note, we can give our label <code>.menu-icon</code> some padding so that the clickable area is a bit bigger, making it easier for the user to trigger the dropdown menu.</p>
+                                    <p>View the full HTML and CSS example on <a href="https://codepen.io/jgarrow/pen/dybwPBq?editors=1100">CodePen</a>.</p>
+
+									<section class="features">
+										<article>
+											<a href="blog_week3_post.html" class="image"><img src="images/responsive_blog_img.jpg" alt="Photo by Taras Shypka on Unsplash" /></a>
+											<h3 class="major">Week 3 -- Responsive Design</h3>
+											<p></p>
+											<a href="blog_week3_post.html" class="special">Continue to post</a>
+										</article>
+										<article>
+											<a href="blog_week2_post.html" class="image"><img src="images/sprint_race.jpg" alt="Photo by Goh Rhy Yan on Unsplash" /></a>
+											<h3 class="major">Week 2 -- First Sprint Challenge</h3>
+											<p>Flexbox and our first Sprint challenge.</p>
+											<a href="blog_week2_post.html" class="special">Continue to post</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+							<ul class="contact">
+									<li class="icon brands fa-twitter"><a href="https://twitter.com/JanessaGarrow"></a></li>
+									<li class="icon brands fab fa-linkedin-in"><a href="https://www.linkedin.com/in/janessa-garrow-b9b760193/"></a></li>
+									<li class="icon brands fab fa-github"><a href="https://github.com/jgarrow"></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
